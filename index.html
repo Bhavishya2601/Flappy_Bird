@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title-section">
+            <div class="title">Flappy Bird</div>
+            <img src="img/flappybird.gif" alt="Flappy Bird Animation" class="bird-gif">
+        </div>
+
+        <div class="buttons">
+            <a href="game.html" class="btn">START</a>
+            <button class="btn" id="aboutBtn">How to Play</button>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal">&times;</span>
+            <h2>How to Play Flappy Bird</h2>
+            <p>
+                <strong>Controls:</strong>
+                • <b>Desktop:</b> Press the <b>SPACEBAR</b> to make the bird flap<br>
+                • <b>Mobile:</b> <b>TAP</b> anywhere on the screen<br><br>
+                
+                <strong>Objective:</strong>
+                Guide your bird through the green pipes without touching them or the ground. Each successful passage earns you one point!<br>
+                
+                <strong>Tips:</strong>
+                • Time your flaps carefully - gravity is always pulling down<br>
+                • Stay calm and find your rhythm<br>
+                • Practice makes perfect!<br><br>
+                
+                <strong>Good luck and have fun!</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const aboutBtn = document.getElementById("aboutBtn");
+        const modal = document.getElementById("aboutModal");
+        const closeModal = document.getElementById("closeModal");
+
+        aboutBtn.onclick = () => modal.style.display = "block";
+        closeModal.onclick = () => modal.style.display = "none";
+        window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+    </script>
+</body>
+
+</html>
