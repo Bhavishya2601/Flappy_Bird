@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FlappyBirdy';
-  src: url('fonts/FlappyBirdy.ttf') format('truetype');
+  src: url('../fonts/FlappyBirdy.ttf') format('truetype');
 }
 
 .title-section {
@@ -9,15 +9,6 @@
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-}
-
-.title {
-  font-size: 5rem;
-  color: #fff;
-  text-shadow: 3px 3px 0px #333, 6px 6px 0px #333;
-  margin: 0;
-  font-weight: bold;
-  letter-spacing: 3px;
 }
 
 .bird-gif {
@@ -40,7 +31,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'FlappyBirdy', 'Arial', sans-serif;
-  background: url('img/bg.jpg') center/cover no-repeat;
+  background: url('../img/bg.jpg') center/cover no-repeat;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -181,7 +172,7 @@ body::before {
 }
 
 /* Modal styles */
-.modal {
+.instruction {
   display: none;
   position: fixed;
   z-index: 10;
@@ -190,9 +181,9 @@ body::before {
   background-color: rgba(0,0,0,0.5);
 }
 
-.modal-content {
+.instruction-content {
   background: linear-gradient(135deg, #fff, #f0f8ff);
-  margin: 5% auto;
+  margin: 1.5% auto;
   padding: 40px;
   width: 90%;
   max-width: 1000px;
@@ -200,21 +191,40 @@ body::before {
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 4px solid #FFD700;
+  font-size: 2rem;
+  color: #333;
 }
 
-.modal-content h2 {
+.instruction-header {
   color: #FF6B35;
   font-size: 2.8rem;
   margin-bottom: 30px;
 }
 
-.modal-content p {
-  font-size: 1.4rem;
-  line-height: 1.8;
-  color: #333;
+.instruction-subheader {
+  color: #000;
+  font-weight: bold;
+  font-size: 2.3rem;
 }
 
-#closeModal {
+.instruction-content ul {
+  text-align: left;
+  display: inline-block;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.instruction-content li {
+  margin: 10px 0;
+}
+
+.instruction-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#closeInstruction {
   float: right;
   font-size: 2rem;
   cursor: pointer;
@@ -232,7 +242,7 @@ body::before {
   }
   
   .title {
-    font-size: 3.5rem;
+    font-size: 6rem;
   }
   
   .bird-gif {
@@ -289,7 +299,7 @@ body::before {
   }
   
   .title {
-    font-size: 2.8rem;
+    font-size: 4rem;
   }
   
   .bird-gif {

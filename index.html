@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flappy Bird Clone</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">nk
 </head>
 
 <body>
@@ -16,42 +17,46 @@
         </div>
 
         <div class="buttons">
-            <a href="game.html" class="btn">START</a>
+            <a href="pages/game.html" class="btn">START</a>
             <button class="btn" id="aboutBtn">How to Play</button>
         </div>
     </div>
 
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal">&times;</span>
-            <h2>How to Play Flappy Bird</h2>
-            <p>
-                <strong>Controls:</strong>
-                • <b>Desktop:</b> Press the <b>SPACEBAR</b> to make the bird flap<br>
-                • <b>Mobile:</b> <b>TAP</b> anywhere on the screen<br><br>
-                
-                <strong>Objective:</strong>
-                Guide your bird through the green pipes without touching them or the ground. Each successful passage earns you one point!<br>
-                
-                <strong>Tips:</strong>
-                • Time your flaps carefully - gravity is always pulling down<br>
-                • Stay calm and find your rhythm<br>
-                • Practice makes perfect!<br><br>
-                
-                <strong>Good luck and have fun!</strong>
-            </p>
+    <div id="aboutModal" class="instruction">
+        <div class="instruction-content">
+            <span id="closeInstruction">&times;</span>
+            <div class="instruction-header">How to Play Flappy Bird</div>
+            <div class="instruction-body">
+                <div>
+                    <div class="instruction-subheader">Controls:</div>
+                    <ul>
+                        <li><b>Desktop:</b> Press the <b>SPACEBAR</b> to make the bird flap</li>
+                        <li><b>Mobile:</b> <b>TAP</b> anywhere on the screen</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <span class="instruction-subheader">Objective:</span>
+                    Guide your bird through the green pipes without touching them or the ground. Each successful passage
+                    earns you one point!
+                </div>
+
+                <div>
+                    <div class="instruction-subheader">Tips:</div>
+                    <ul>
+                        <li>Time your flaps carefully - gravity is always pulling down</li>
+                        <li>Stay calm and find your rhythm</li>
+                        <li>Practice makes perfect!</li>
+                    </ul>
+                </div>
+
+                <div class="instruction-subheader">Good luck and have fun!</div>
+
+            </div>
         </div>
     </div>
 
-    <script>
-        const aboutBtn = document.getElementById("aboutBtn");
-        const modal = document.getElementById("aboutModal");
-        const closeModal = document.getElementById("closeModal");
-
-        aboutBtn.onclick = () => modal.style.display = "block";
-        closeModal.onclick = () => modal.style.display = "none";
-        window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
