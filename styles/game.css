@@ -1,0 +1,191 @@
+@font-face {
+    font-family: 'FlappyBirdy';
+    src: url('../fonts/FlappyBirdy.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'FlappyBirdy', Arial, sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.game-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    pointer-events: none;
+}
+
+.game-ui > * {
+    pointer-events: auto;
+}
+
+.high-score-display{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.score-display, .high-score-display {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.main-menu-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.main-menu-btn:hover {
+    background: linear-gradient(135deg, #ee5a52 0%, #dc4545 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+#gameCanvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    cursor: pointer;
+    background: #87CEEB;
+}
+
+.game-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 3px solid #8B4513;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#messageTitle {
+    font-size: 30px;
+    color: #8B4513;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#messageText {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .game-ui {
+        padding: 15px;
+    }
+    
+    .score-display, .high-score-display {
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+    
+    .main-menu-btn {
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+    
+    #messageTitle {
+        font-size: 36px;
+    }
+    
+    #messageText {
+        font-size: 20px;
+    }
+    
+    .game-message {
+        padding: 25px;
+        margin: 20px;
+    }
+}
+
+@media (max-height: 500px) {
+    .game-ui {
+        padding: 10px;
+    }
+    
+    .score-display, .high-score-display {
+        font-size: 18px;
+        padding: 8px 16px;
+    }
+    
+    .main-menu-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    
+    #messageTitle {
+        font-size: 32px;
+    }
+    
+    #messageText {
+        font-size: 18px;
+    }
+    
+    .game-message {
+        padding: 20px;
+    }
+}
+
+/* Game state animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
