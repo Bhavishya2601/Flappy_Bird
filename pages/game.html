@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flappy Bird Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/game.css">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="game-ui">
+        <div class="user-info" id="userInfo" style="display: none;">
+            <span>Player: </span>
+            <span id="playerName">Guest</span>
+        </div>
         <div class="high-score-display">
             <span>Best: </span>
             <span id="highScore">0</span>
+        </div>
+        <div class="auth-buttons" id="authButtons">
+            <a href="signin.html" class="auth-link">Sign In</a>
+            <button id="signOutBtn" class="auth-link" style="display: none;">Sign Out</button>
         </div>
         <a href="../index.html" class="main-menu-btn">Main Menu</a>
     </div>
@@ -23,6 +34,7 @@
         <p id="messageText">Press SPACE to start</p>
     </div>
     
+    <script src="../js/auth.js"></script>
     <script src="../js/game.js"></script>
 </body>
 </html>

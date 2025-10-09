@@ -30,22 +30,25 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'FlappyBirdy', 'Arial', sans-serif;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
   background: url('../img/bg.jpg') center/cover no-repeat;
   height: 100vh;
   overflow: hidden;
   position: relative;
 }
 
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 1;
+.signin-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .container {
@@ -63,6 +66,7 @@ body::before {
 }
 
 .title {
+  font-family: 'FlappyBirdy', sans-serif;
   font-size: 8rem;
   color: #fff;
   text-shadow: 3px 3px 0px #333, 6px 6px 0px #333;
@@ -79,7 +83,6 @@ body::before {
   margin: 0;
   font-size: 1.4rem;
   line-height: 1.6;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -120,22 +123,23 @@ body::before {
   color: #fff;
   font-weight: bold;
   font-size: 2rem;
-  font-family: 'FlappyBirdy', 'Arial', sans-serif;
+  font-family: 'Manrope', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.2s ease;
-  
-  /* Retro pixel-style border effect */
   box-shadow: 
     0 0 0 2px #fff,
     0 0 0 4px #8B4513,
     0 4px 0 4px #654321,
     0 6px 8px rgba(0, 0, 0, 0.3);
-  
-  /* Pixel-perfect corners */
   border-radius: 0;
   position: relative;
+}
+
+.buttons .btn[href*="game.html"],
+.buttons .btn#aboutBtn {
+  font-family: 'FlappyBirdy', sans-serif;
 }
 
 .buttons .btn:hover {
@@ -157,21 +161,6 @@ body::before {
     0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-
-
-.play-triangle::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 23px solid #fff;
-  border-top: 16px solid transparent;
-  border-bottom: 16px solid transparent;
-  top: -16px;
-  left: -22px;
-}
-
-/* Modal styles */
 .instruction {
   display: none;
   position: fixed;
@@ -183,28 +172,27 @@ body::before {
 
 .instruction-content {
   background: linear-gradient(135deg, #fff, #f0f8ff);
-  margin: 1.5% auto;
-  padding: 40px;
+  margin: 3% auto;
+  padding: 20px;
   width: 90%;
   max-width: 1000px;
   border-radius: 25px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border: 4px solid #FFD700;
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: #333;
 }
 
 .instruction-header {
   color: #FF6B35;
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   margin-bottom: 30px;
 }
 
 .instruction-subheader {
   color: #000;
-  font-weight: bold;
-  font-size: 2.3rem;
+  font-size: 1.5rem;
 }
 
 .instruction-content ul {
@@ -231,7 +219,6 @@ body::before {
   font-weight: bold;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     padding: 15px 20px;
@@ -277,7 +264,12 @@ body::before {
     margin: 8px;
   }
   
-
+  .signin-btn {
+    top: 15px;
+    right: 15px;
+    font-size: 18px;
+    padding: 12px 24px;
+  }
   
   .modal-content h2 {
     font-size: 2.2rem;
@@ -326,5 +318,12 @@ body::before {
     font-size: 1.3rem;
     padding: 8px 16px;
     margin: 6px;
+  }
+  
+  .signin-btn {
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }

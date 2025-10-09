@@ -7,9 +7,10 @@ const PIPE_WIDTH = 80;
 
 let gameState = 'waiting'; 
 let score = 0;
-let highScore = localStorage.getItem('flappyBirdHighScore') || 0;
+let highScore = 0;
 let pipes = [];
 let frameCount = 0;
+let authManager;
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -38,11 +39,48 @@ birdImg.src = '../img/flappybird.png';
 topPipeImg.src = '../img/toppipe.png';
 bottomPipeImg.src = '../img/bottompipe.png';
 
+// Initialize authentication UI
+function initAuth() {
+    // Wait for authManager to be available
+    if (typeof AuthManager !== 'undefined') {
+        authManager = new AuthManager();
+        updateAuthUI();
+    } else {
+        setTimeout(initAuth, 100);
+    }
+}
+
+function updateAuthUI() {
+    const userInfo = document.getElementById('userInfo');
+    const playerName = document.getElementById('playerName');
+    const authButtons = document.getElementById('authButtons');
+    const signOutBtn = document.getElementById('signOutBtn');
+    
+    if (authManager.isLoggedIn()) {
+        const user = authManager.getCurrentUser();
+        userInfo.style.display = 'block';
+        playerName.textContent = user.username;
+        
+        authButtons.querySelector('a').style.display = 'none';
+        signOutBtn.style.display = 'inline-block';
+    } else {
+        userInfo.style.display = 'none';
+        authButtons.querySelector('a').style.display = 'inline-block';
+        signOutBtn.style.display = 'none';
+    }
+    
+    highScore = authManager.getHighScore();
+    highScoreElement.textContent = highScore;
+    
+    signOutBtn.addEventListener('click', () => {
+        authManager.signOut();
+    });
+}
+
 // Initialize game
 function init() {
-
     resizeCanvas();
-    highScoreElement.textContent = highScore;
+    initAuth();
     resetGame();
     
     document.addEventListener('keydown', handleInput);
@@ -214,9 +252,14 @@ function gameOver() {
     
     if (score > highScore) {
         highScore = score;
-        localStorage.setItem('flappyBirdHighScore', highScore);
-        highScoreElement.textContent = highScore;
         
+        if (authManager) {
+            authManager.updateHighScore(score);
+        } else {
+            localStorage.setItem('flappyBirdHighScore', highScore);
+        }
+        
+        highScoreElement.textContent = highScore;
         showMessage('New High Score!', `Amazing! You scored ${score} points! Press SPACE to play again`);
     } else {
         showMessage('Game Over', `Score: ${score} - Press SPACE to play again`);

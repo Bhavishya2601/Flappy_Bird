@@ -10,7 +10,7 @@
 }
 
 body {
-    font-family: 'FlappyBirdy', Arial, sans-serif;
+    font-family: 'Manrope', 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
     overflow: hidden;
     width: 100vw;
@@ -36,10 +36,10 @@ body {
 }
 
 .high-score-display{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Manrope', sans-serif;
 }
 
-.score-display, .high-score-display {
+.score-display, .high-score-display, .user-info {
     background: rgba(255, 255, 255, 0.9);
     padding: 12px 24px;
     border-radius: 25px;
@@ -50,23 +50,37 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.auth-link {
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
 .main-menu-btn {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
     color: white;
-    padding: 12px 20px;
+    padding: 10px 18px;
     border-radius: 25px;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 18px;
     font-weight: bold;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-}
-
-.main-menu-btn:hover {
-    background: linear-gradient(135deg, #ee5a52 0%, #dc4545 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
 }
 
 #gameCanvas {
@@ -112,7 +126,6 @@ body {
     display: none !important;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
     .game-ui {
         padding: 15px;
@@ -170,7 +183,6 @@ body {
     }
 }
 
-/* Game state animations */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
