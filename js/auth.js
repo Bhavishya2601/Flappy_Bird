@@ -28,8 +28,93 @@ class AuthManager {
         return session ? JSON.parse(session) : null;
     }
 
+    isValidEmail(email) {
+        email = email.trim();
+        
+        const basicEmailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        
+        const invalidChars = /[#^&$%*+={}[\]|\\:";'<>?/~`!]/;
+        
+        const multipleDots = /\.\./;
+        
+        const invalidDotPosition = /^\.|\.$|@\.|\.@/;
+        
+        if (!basicEmailRegex.test(email)) {
+            return false;
+        }
+        
+        if (invalidChars.test(email)) {
+            return false;
+        }
+        
+        if (multipleDots.test(email)) {
+            return false;
+        }
+        
+        if (invalidDotPosition.test(email)) {
+            return false;
+        }
+        
+        const parts = email.split('@');
+        if (parts.length !== 2) {
+            return false;
+        }
+        
+        const [localPart, domainPart] = parts;
+        
+        if (localPart.length < 1 || localPart.length > 64) {
+            return false;
+        }
+        
+        if (domainPart.length < 3 || domainPart.length > 255) {
+            return false;
+        }
+        
+        return true;
+    }
+
+    isValidUsername(username) {
+        username = username.trim();
+        
+        if (!username || username.length === 0) {
+            return false;
+        }
+        
+        if (/^\d+$/.test(username)) {
+            return false;
+        }
+        
+        if (username.includes('-') && /^-/.test(username)) {
+            return false;
+        }
+        
+        if (username.length < 3) {
+            return false;
+        }
+        
+        if (username.length > 20) {
+            return false;
+        }
+        
+        if (!/^[a-zA-Z0-9_][a-zA-Z0-9_-]*$/.test(username)) {
+            return false;
+        }
+        
+        return true;
+    }
+
     signUp(username, email, password) {
         const errorElement = document.getElementById('errorMessage');
+
+        if (!this.isValidUsername(username)) {
+            this.showError('Username must be 3-20 characters, contain letters/numbers/underscore, cannot be only numbers, and cannot start with a hyphen!');
+            return false;
+        }
+
+        if (!this.isValidEmail(email)) {
+            this.showError('Please enter a valid email address!');
+            return false;
+        }
 
         if (password.length < 6) {
             this.showError('Password must be at least 6 characters long!');
