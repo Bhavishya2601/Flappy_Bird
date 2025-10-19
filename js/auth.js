@@ -180,7 +180,12 @@ class AuthManager {
 
     signOut() {
         localStorage.removeItem('flappyBirdSession');
-        window.location.href = '../index.html';
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/pages/')) {
+            window.location.href = '../index.html';
+        } else {
+            window.location.reload();
+        }
     }
 
     showError(message) {
